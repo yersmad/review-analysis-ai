@@ -14,7 +14,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from .models import Review, Analysis
 from .serializers import ReviewSerializer, AnalysisSerializer, PromptRequestSerializer
 
-api_key = os.getenv("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", None)
+api_key = os.getenv("OPEN_AI_KEY", None)
 
 
 def get_reviews(request, url):
@@ -66,7 +66,7 @@ class PromptView(APIView):
             endpoint = 'https://api.openai.com/v1/chat/completions'
             headers = {
                 'Content-Type': 'application/json',
-                'Authorization': f'Bearer {"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"}'
+                'Authorization': f'Bearer {"OPEN_AI_KEY"}'
                 }
             data = {
                 'messages': [{'role': 'system', 'content': 'You are a helpful assistant that provides information.'},
